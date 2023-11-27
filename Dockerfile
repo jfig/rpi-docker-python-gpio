@@ -1,5 +1,7 @@
 FROM python:3.9-slim
 
+ENV APP app.py
+
 RUN groupadd gpio && usermod -G gpio root
 
 # Install RPi.GPIO library and gcc for compilation of PIP packages
@@ -19,10 +21,5 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir  RPi.GPIO && \
     pip install --no-cache-dir -r requirements.txt
 
-# Remove gcc
-RUN apt-get purge -y \
-    gcc \
-    && apt-get autoremove -y
-
 # Run the script when the container launches
-CMD ["python", "./app.py"]
+CMD ["entrypoint.sh"]
