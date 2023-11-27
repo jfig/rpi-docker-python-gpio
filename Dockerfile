@@ -20,9 +20,9 @@ RUN pip install --no-cache-dir  RPi.GPIO && \
     pip install --no-cache-dir -r requirements.txt
 
 # Remove gcc
-RUN apt-get purge \
+RUN apt-get purge -y \
     gcc \
-    && apt-get autoremove
+    && apt-get autoremove -y
 
 # Run the script when the container launches
 CMD ["python", "./app.py"]
