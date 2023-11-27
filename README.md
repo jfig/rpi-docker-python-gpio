@@ -9,7 +9,15 @@ their GPIO-driven projects.
 ## Usage
 
 ```bash
-docker run --device /dev/gpiomem jfig/rpi-docker-python-gpio
+docker run --device /dev/gpiomem  --group-add gpio  jfig/rpi-docker-python-gpio
 ```
 
+On first execution ```entrypoint.sh``` install python packages on packages.txt.
 
+## Environment Variables
+
+### APP
+
+Name of the python application that is run by default on container startup.
+
+Default: ```app.py```
