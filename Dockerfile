@@ -17,11 +17,11 @@ WORKDIR /app
 COPY app.py ./
 
 # Create script directory
-RUN mkdir -p /usr/src/scripts
+RUN mkdir -p /appscripts
 
 # Copy the entrypoint script into the container
-COPY entrypoint.sh /usr/src/scripts/
-RUN chmod +x /usr/src/scripts/entrypoint.sh
+COPY entrypoint.sh /appscripts/
+RUN chmod +x /appscripts/entrypoint.sh
 
 
 # Install RPi.GPIO  and any needed packages specified in requirements.txt
@@ -30,5 +30,5 @@ RUN pip install --no-cache-dir  RPi.GPIO && \
     pip install --no-cache-dir -r requirements.txt
 
 # Run entrypoint.sh when the container launches
-CMD ["/bin/bash", "/usr/src/scripts/entrypoint.sh"]
+CMD ["/bin/bash", "/appscripts/entrypoint.sh"]
 
