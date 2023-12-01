@@ -15,6 +15,7 @@ WORKDIR /app
 
 # Copy the Python script into the container at /usr/src/app
 COPY app.py ./
+COPY entrypoint.sh ./
 
 # Install RPi.GPIO  and any needed packages specified in requirements.txt
 COPY requirements.txt ./
