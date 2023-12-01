@@ -3,6 +3,8 @@
 # Path to the marker file
 MARKER_FILE="/app/.first-run-complete"
 
+cd /app
+
 # Check if the marker file exists
 if [ ! -f "$MARKER_FILE" ]; then
     # The marker file doesn't exist, so this is the first run
