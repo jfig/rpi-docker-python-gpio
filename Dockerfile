@@ -23,4 +23,4 @@ RUN pip install --no-cache-dir  RPi.GPIO && \
     pip install --no-cache-dir -r requirements.txt
 
 # Run the script when the container launches
-CMD ["entrypoint.sh"]
+CMD ["/app/entrypoint.sh"]
