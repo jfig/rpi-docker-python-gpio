@@ -13,6 +13,11 @@ RUN apt-get update && apt-get install -y \
 # Set the working directory in the container
 WORKDIR /app
 
+# Install RPi.GPIO  and any needed packages specified in requirements.txt
+COPY requirements.txt ./
+RUN pip install --no-cache-dir  RPi.GPIO && \
+    pip install --no-cache-dir -r requirements.txt
+
 # Copy the Python script into the container at /usr/src/app
 COPY app.py ./
 
@@ -21,13 +26,6 @@ RUN mkdir -p /appscripts
 
 # Copy the entrypoint script into the container
 COPY entrypoint.sh /appscripts/
-RUN chmod +x /appscripts/entrypoint.sh
-
-
-# Install RPi.GPIO  and any needed packages specified in requirements.txt
-COPY requirements.txt ./
-RUN pip install --no-cache-dir  RPi.GPIO && \
-    pip install --no-cache-dir -r requirements.txt
 
 # Run entrypoint.sh when the container launches
 CMD ["/bin/bash", "/appscripts/entrypoint.sh"]
