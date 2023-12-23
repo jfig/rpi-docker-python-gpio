@@ -10,6 +10,12 @@ RUN apt-get update && apt-get install -y \
     rpi.gpio \
     && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /usr/src/app/
+# Create script directory, copy the entrypoint script into the container, and make it executable
+COPY entrypoint.sh /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+
 # Set the working directory in the container
 WORKDIR /app
 
@@ -21,12 +27,4 @@ RUN pip install --no-cache-dir  RPi.GPIO && \
 # Copy the Python script into the container at /usr/src/app
 COPY app.py ./
 
-# Create script directory
-RUN mkdir -p /appscripts
-
-# Copy the entrypoint script into the container
-COPY entrypoint.sh /appscripts/
-
-# Run entrypoint.sh when the container launches
-CMD ["/bin/bash", "/appscripts/entrypoint.sh"]
-
+CMD ["/bin/bash", "/usr/src/app/entrypoint.sh"]
