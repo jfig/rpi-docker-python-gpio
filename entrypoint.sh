@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to the marker file
-MARKER_FILE="/app/.first-run-complete"
+MARKER_FILE="/.first-run-complete"
 
 cd /app
 
