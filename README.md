@@ -6,6 +6,10 @@ environment for deploying and testing Python-based applications that interact
 ith the Raspberry Pi's hardware. Ideal for developers looking to containerize 
 their GPIO-driven projects.
 
+**Docker image:** jfig/rpi-docker-python-gpio
+
+**Github repo:** https://github.com/jfig/rpi-docker-python-gpio
+
 ## Usage
 
 ```bash
