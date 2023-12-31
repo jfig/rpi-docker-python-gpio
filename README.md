@@ -12,7 +12,10 @@ their GPIO-driven projects.
 docker run --device /dev/gpiomem  --group-add gpio  jfig/rpi-docker-python-gpio
 ```
 
-On first execution ```/usr/src/scripts/entrypoint.sh``` is run to install python packages on packages.txt.
+On first execution `/usr/src/scripts/entrypoint.sh` is run to install python packages on packages.txt and remove `gcc`.
+
+`gcc` is left on the Docker Image because some Python Images require it to 
+install.
 
 ## Environment Variables
 
